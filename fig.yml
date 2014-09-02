@@ -1,0 +1,17 @@
+serf:
+  image: fortytwoio/base:latest
+  environment:
+    SERF_ROLE: agent
+  expose:
+    - "7373"
+    - "7946"
+
+www: 
+  build: .
+  environment:
+    SERF_ROLE: www
+  expose:
+    - "80"
+  links:
+    - serf
+

@@ -1,1 +1,20 @@
-../sites-available/default
+server {
+	listen 80 default_server;
+
+	root /srv/www;
+	index index.html;
+
+	server_name localhost;
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+
+    location ~ /\. {
+        access_log off;
+        log_not_found off;
+        deny all;
+    }
+
+}
+
